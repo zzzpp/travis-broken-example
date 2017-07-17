@@ -1,6 +1,10 @@
 language: php
 dist: trusty
 php:
-  - 5.5
-  - 5.4
-script: phpunit Test.php
+        - 5.5
+        - 5.4
+script:
+        - phpunit Test.php
+        - vendor/bin/phpunit --coverage-clover=coverage.xml
+after_success:
+        - bash <(curl -s https://codecov.io/bash) -t a7342d30-f916-47f3-b677-ecf487e5f1a4
